@@ -1,0 +1,26 @@
+name: 월드컵 결과 수집
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # 5분마다 (UTC 기준, 부하 시 약간 지연될 수 있음)
+  workflow_dispatch:         # Actions 탭에서 수동 실행 버튼
+
+# 동시에 두 번 돌지 않도록
+concurrency:
+  group: fetch-scores
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 결과 수집 실행
+        env:
+          SUPABASE_URL:         ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          FOOTBALL_DATA_TOKEN:  ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: python fetch_scores.py
