@@ -75,7 +75,7 @@ TEAM_ALIASES = {
     "스웨덴": ["Sweden"],
     "튀니지": ["Tunisia"],
     "스페인": ["Spain"],
-    "카보베르데": ["Cape Verde", "Cabo Verde"],
+    "카보베르데": ["Cape Verde", "Cabo Verde", "Cape Verde Islands"],
     "벨기에": ["Belgium"],
     "이집트": ["Egypt"],
     "사우디": ["Saudi Arabia"],
